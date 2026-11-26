@@ -1,0 +1,164 @@
+# Dependencies
+node_modules/
+
+# Environment files (NEVER commit real credentials)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.docker
+.env.docker.*
+!.env.docker.example
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Build output
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend env
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/.venv/
+!backend/.env.docker.example
+backend/__pycache__/
+
+# Private opt-in STT diagnosis (never commit real recordings)
+.stt-diagnostics/
+
+# Local authoritative-recovery snapshots
+.recovery/
+
+# Local diagnostics and generated data
+.transcription-preview/
+.phase18-build-*/
+/tmp/
+/eval/
+coverage/
+**/coverage/
+.cache/
+**/.cache/
+*.log
+*.jsonl
+*.zip
+*.gguf
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.mp3
+*.wav
+!/backend/tests/fixtures/synthetic_candidate.wav
+
+# Local credentials and private key material
+**/.aws/
+**/credentials
+**/credentials.*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+
+# Candidate files and generated reports
+/sample_resume.pdf
+/sample_resume.docx
+/2303A51065-*.pdf
+/2303A51065-*.docx
+/Interview-IQ_Capstone_Report*.pdf
+/Interview-IQ_Capstone_Report*.docx
+/*.jsonl
+/*_REPORT.*
+/*_AUDIT.*
+/*_AUDIT_REPORT.*
+/*_IMPLEMENTATION_PLAN.*
+/*_TEST_REPORT.*
+/AUDIT_REPORT.md
+/AWS_DEPLOYMENT_READINESS.md
+/AZURE_SPEECH_DOCKER_FIX_REPORT.md
+/DOCKER_OLLAMA_RESUME_FIX.md
+/DOCKER_VERIFICATION_REPORT.md
+/FAULT.TXT
+/FINAL_PRE_DEPLOYMENT_READINESS.md
+/INTERVIEW_EXPERIENCE_OVERHAUL_AUDIT.txt
+/INTERVIEW_IQ_PHASE_11_*.txt
+/LATENCY_DIAGNOSIS_REPORT.txt
+/LOCAL_AWS_GPU_SETUP_GUIDE.md
+/PERFORMANCE_BASELINE.md
+/PROJECT_ROADMAP.md
+/QWEN3*.txt
+/aws_report*.md
+/report_review.md
+/PHASE*.md
+/PHASE*.txt
+/phase_*.md
+/phase_*.txt
+/docs/*
+!/docs/DOCKER_LOCAL.md
+/Highway Rider 3D Report/
+/research-paper/
+/paper-correction-work/
+/submission_revision/
+/Interview-IQ Workflow Report/
+/Interview-IQ Workflow Screenshots/
+/Interview-IQ_Poster/
+/Interview-IQ_Video/
+/Print Ready Final/
+/Information Print Ready/
+/Information-1 Print Ready/
+/SRU Report New/
+/interview-iq-parody/
+/docker/staging/
+
+# Personal/live test data and tests that depend on it
+/backend/tests/fixtures/phase20_2_transcripts.json
+/backend/tests/fixtures/live_endpoint_result.json
+/backend/tests/fixtures/benchmark_*.json
+/backend/benchmark_adaptive_latency.py
+/backend/benchmark_results.json
+/backend/tests/test_phase20_2_transcription.py
+/backend/tests/test_live_api_sequence.py
+/backend/tests/test_live_http_flow.py
+/backend/tests/test_phase12_profile.py
+/backend/tests/test_phase12_token_refresh.py
+/backend/tests/verify_phase12_all_17_tests.py
+/backend/tests/verify_phase13_isolation_edge_cases.py
+/backend/tests/verify_phase13_real_e2e_flow.py
+/backend/tests/verify_phase14_real_e2e_flow.py
+/backend/tests/verify_phase16_rls.py
+/backend/tests/verify_real_e2e_persistence.py
+/backend/tests/verify_real_persistence_e2e.py
+/backend/tests/verify_phase16_rate_limit.py
+/backend/scripts/benchmark_ec2_whisper_audit.json
+/backend/scripts/inspect_benchmark_recordings.py
+/backend/scripts/profile_phase21.py
+/scripts/test_phase12_401_flow.js
+/scripts/test_phase12_multitab.js
+/scripts/test_phase12_phase13_foundation.js
+/scripts/verify_phase15_1_e2e_state_flow.js
+/scripts/verify_real_tester_journey.js
+
+# Ignore environment files at every depth; allow only reviewed templates.
+**/.env
+**/.env.*
+!/.env.example
+!/.env.docker.example
+!/backend/.env.example
+!/backend/.env.docker.example

@@ -1,0 +1,210 @@
+[
+  {
+    "id": "java_concise",
+    "request": {
+      "question": "How does Java handle memory management?",
+      "candidate_answer": "Java stores objects in heap memory, and the garbage collector automatically removes objects that are no longer reachable.",
+      "category": "Technical"
+    },
+    "assessment": "Core correct: heap and reachability-based collection.",
+    "range": [
+      70,
+      85
+    ]
+  },
+  {
+    "id": "java_detailed",
+    "request": {
+      "question": "How does Java handle memory management?",
+      "candidate_answer": "Objects generally live on the heap. The JVM traces references from roots such as active stack frames and reclaims objects that are no longer reachable. Local variables and references can live in a thread's stack frames, which are discarded when methods return. The exact collection algorithm depends on the configured collector.",
+      "category": "Technical"
+    },
+    "assessment": "Correct, detailed heap/root/stack explanation.",
+    "range": [
+      85,
+      100
+    ]
+  },
+  {
+    "id": "java_spoken",
+    "request": {
+      "question": "How does Java handle memory management?",
+      "candidate_answer": "Um, objects, they go on heap. If nothing the program can still reach points to them, JVM can free that space automatically.",
+      "category": "Technical"
+    },
+    "assessment": "Equivalent main concepts, recognizable with fillers and grammar.",
+    "range": [
+      70,
+      85
+    ]
+  },
+  {
+    "id": "java_terms",
+    "request": {
+      "question": "How does Java handle memory management?",
+      "candidate_answer": "Java uses heap memory and garbage collection.",
+      "category": "Technical"
+    },
+    "assessment": "Partial credit for mechanisms named without explaining them.",
+    "range": [
+      40,
+      64
+    ]
+  },
+  {
+    "id": "java_keywords",
+    "request": {
+      "question": "How does Java handle memory management?",
+      "candidate_answer": "Heap. GC. Stack. JVM. Reachability.",
+      "category": "Technical"
+    },
+    "assessment": "Relevant terms with no explanatory relationship.",
+    "range": [
+      20,
+      39
+    ]
+  },
+  {
+    "id": "java_wrong",
+    "request": {
+      "question": "How does Java handle memory management?",
+      "candidate_answer": "Java stores everything on the stack and programmers manually delete all objects.",
+      "category": "Technical"
+    },
+    "assessment": "Fundamentally wrong mechanism.",
+    "range": [
+      0,
+      19
+    ]
+  },
+  {
+    "id": "dsa_concise",
+    "request": {
+      "question": "What is binary search and what is its time complexity?",
+      "candidate_answer": "Binary search works on sorted data. It checks the middle element and halves the search range each time, so the time complexity is O(log n).",
+      "category": "Technical"
+    },
+    "assessment": "Correct prerequisite, mechanism, and complexity.",
+    "range": [
+      80,
+      100
+    ]
+  },
+  {
+    "id": "dsa_partial",
+    "request": {
+      "question": "What is binary search and what is its time complexity?",
+      "candidate_answer": "Binary search is O(log n).",
+      "category": "Technical"
+    },
+    "assessment": "Correct requested complexity alone.",
+    "range": [
+      40,
+      64
+    ]
+  },
+  {
+    "id": "dsa_wrong",
+    "request": {
+      "question": "What is binary search and what is its time complexity?",
+      "candidate_answer": "Binary search checks every item in unsorted data once, so halving makes it O(log n).",
+      "category": "Technical"
+    },
+    "assessment": "Misuses valid terms and complexity to claim a wrong mechanism.",
+    "range": [
+      0,
+      19
+    ]
+  },
+  {
+    "id": "dbms_concise",
+    "request": {
+      "question": "How does a SQL LEFT JOIN handle rows without a match?",
+      "candidate_answer": "Every left row stays, and if there's no right-side match those right-side columns are NULL.",
+      "category": "Technical"
+    },
+    "assessment": "Correct concise both required facts.",
+    "range": [
+      75,
+      100
+    ]
+  },
+  {
+    "id": "oop_paraphrase",
+    "request": {
+      "question": "What is runtime polymorphism in object-oriented programming?",
+      "candidate_answer": "A call through a base-type reference can run a derived object's overridden method because the actual object's type determines which implementation executes.",
+      "category": "Technical"
+    },
+    "assessment": "Accurate dynamic dispatch in natural wording.",
+    "range": [
+      75,
+      100
+    ]
+  },
+  {
+    "id": "design_concise",
+    "request": {
+      "question": "How would you keep a system design for a read-heavy catalog fast while limiting stale results?",
+      "candidate_answer": "Cache frequent reads with a short TTL. Invalidate the entry after a write so requests usually get fresh data; the TTL bounds how long a missed invalidation can matter.",
+      "category": "Technical"
+    },
+    "assessment": "Valid mechanisms and trade-off for scoped design.",
+    "range": [
+      75,
+      100
+    ]
+  },
+  {
+    "id": "hr_concise",
+    "request": {
+      "question": "Tell me about a time you resolved a disagreement with a teammate.",
+      "candidate_answer": "In our class project we disagreed on scope. I asked each person what they needed, wrote down the options, and we agreed on the smallest feature set that met the deadline.",
+      "category": "HR"
+    },
+    "assessment": "Relevant incident, action, result, no employment assumption.",
+    "range": [
+      75,
+      100
+    ]
+  },
+  {
+    "id": "off_topic",
+    "request": {
+      "question": "How does a SQL LEFT JOIN handle rows without a match?",
+      "candidate_answer": "A goalkeeper can handle the ball inside their own penalty area.",
+      "category": "Technical"
+    },
+    "assessment": "Clear but unrelated.",
+    "range": [
+      0,
+      19
+    ]
+  },
+  {
+    "id": "no_answer",
+    "request": {
+      "question": "What is runtime polymorphism in object-oriented programming?",
+      "candidate_answer": "I don't know.",
+      "category": "Technical"
+    },
+    "assessment": "Explicit non-answer.",
+    "range": [
+      0,
+      5
+    ]
+  },
+  {
+    "id": "empty",
+    "request": {
+      "question": "What is runtime polymorphism in object-oriented programming?",
+      "candidate_answer": "",
+      "category": "Technical"
+    },
+    "assessment": "No content.",
+    "range": [
+      0,
+      5
+    ]
+  }
+]

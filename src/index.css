@@ -1,0 +1,145 @@
+@config "../tailwind.config.cjs";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ui-page: #F8FAFC;
+  --ui-surface: #FFFFFF;
+  --ui-subtle: #F1F5F9;
+  --ui-heading: #0F172A;
+  --ui-ink: #334155;
+  --ui-secondary: #475569;
+  --ui-line: #CBD5E1;
+  --ui-primary: #4338CA;
+  --ui-pressed: #3730A3;
+  --ui-selected: #EEF2FF;
+  --ui-control-border: #64748B;
+  --ui-success: #065F46;
+  --ui-success-bg: #ECFDF5;
+  --ui-warning: #92400E;
+  --ui-warning-bg: #FFFBEB;
+  --ui-error: #991B1B;
+  --ui-error-bg: #FEF2F2;
+  color-scheme: light;
+  font-variant-numeric: tabular-nums;
+}
+@layer base {
+  body { @apply bg-page text-ink font-sans antialiased; line-height: 1.55; }
+  input, select, button, textarea { font-family: inherit; }
+  :focus-visible { outline: 2px solid var(--ui-primary); outline-offset: 3px; }
+  h1, h2, h3, h4 { @apply text-heading font-semibold; }
+  button { touch-action: manipulation; }
+}
+@layer components {
+  .glass-card, .glass-card-hover { @apply rounded-lg border border-line bg-surface; }
+  .glass-card-hover:hover { @apply border-secondary; }
+  .btn-primary, .btn-secondary, .btn-ghost { @apply rounded-md px-5 py-2.5 text-sm font-medium min-h-11; }
+  .btn-primary { @apply bg-primary text-white hover:bg-pressed; }
+  .btn-secondary { @apply bg-surface border border-line text-heading hover:bg-subtle; }
+  .btn-ghost { @apply text-secondary hover:bg-subtle; }
+  button:disabled { @apply opacity-60 cursor-not-allowed; }
+  .input-field { @apply w-full rounded-md border border-line bg-surface px-4 py-3 text-heading placeholder-secondary focus:border-primary; border-color: var(--ui-control-border); }
+  .sidebar-link, .sidebar-link-active { @apply flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium; }
+  .sidebar-link { @apply text-secondary hover:bg-subtle; }
+  .sidebar-link-active { @apply text-primary bg-selected; }
+  .progress-bar { @apply h-2 bg-subtle rounded-full overflow-hidden; }
+  .progress-fill { @apply h-full rounded-full; }
+  .gradient-text, .gradient-text-rose { @apply text-primary; }
+  .section-title { @apply text-xl font-semibold mb-4; }
+  .page-container { @apply min-h-screen bg-page; }
+  .content-area { @apply p-4 sm:p-6 md:p-8 max-w-7xl mx-auto; }
+  .content-area h1 { font-size: clamp(1.75rem,3vw,2rem); line-height: 1.2; }
+}
+/* Voice/Camera stage only; Text mode keeps its existing layout. */
+.iiq-immersive { height: 100dvh; --iiq-controls-height: 112px; }
+.iiq-footer { height: var(--iiq-controls-height); }
+.iiq-main { display: flex; flex-direction: column; gap: 12px; }
+.iiq-stage-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 24px; align-items: center; }
+.iiq-video-column { --caption-space: 0px; container-type: size; height: 100%; min-height: 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.iiq-video-column:has(.iiq-caption-panel) { --caption-space: 122px; }
+.iiq-candidate { flex: none; width: min(100%, calc((100cqh - var(--caption-space)) * 16 / 9)); aspect-ratio: 16 / 9; max-height: calc(100% - var(--caption-space));  }
+.iiq-caption-panel { flex: none; width: min(100%, calc((100cqh - var(--caption-space)) * 16 / 9)); height: 110px; min-width: 0; }
+.iiq-sidebar { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.iiq-progress { flex: 0 1 220px; }
+.iiq-controls { min-height: 80px; width: max-content; max-width: calc(100vw - 24px); }
+.iiq-voice-popover { right: -48px; }
+.iiq-focus:focus-visible { outline: 2px solid var(--ui-primary); outline-offset: 3px; }
+.iiq-recovery { max-height: 80px; overflow-y: auto; align-self: center; flex-shrink: 0; }
+.iiq-avatar { overflow: hidden; }
+.iiq-avatar > div:first-child > div:last-child { width: 64px; height: 64px; }
+.immersive-toasts { bottom: 112px; }
+.iiq-immersive [class*="backdrop-blur"] { backdrop-filter: none; }
+.iiq-immersive .iiq-avatar [class*="duration-"] { transition-duration: 180ms; }
+@media (max-width: 1023px) {
+  .iiq-stage-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; gap: 12px; }
+  .iiq-sidebar { flex-direction: row; align-items: center; justify-content: center; }
+  .iiq-interviewer { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 12px; min-width: 0; }
+  .iiq-interviewer > span { display: none; }
+  .iiq-avatar { flex-direction: row; gap: 10px; }
+  .iiq-avatar > div:first-child > div:last-child { width: 36px; height: 36px; }
+  .iiq-avatar > div:first-child > div:last-child > div:first-child { width: 26px; height: 26px; margin: 0; }
+  .iiq-avatar > div:first-child > div:last-child > div:not(:first-child) { display: none; }
+  .iiq-avatar > div:last-child { margin-top: 0; }
+  .iiq-avatar > div:last-child > div { transform: none; margin-top: 0; }
+}
+@media (max-width: 767px) {
+  .iiq-immersive { --iiq-controls-height: 144px; }
+  .iiq-controls { width: min(440px, calc(100vw - 24px)); border-radius: 10px; padding: 12px; }
+  .iiq-done { width: 48px; padding: 0; }
+  .iiq-header { flex-wrap: wrap; gap: 0 8px; padding: 0 12px; }
+  .iiq-header > div:first-child > span { font-size: 12px; }
+  .iiq-header .iiq-brand { flex: 1 1 0; }
+  .iiq-progress { flex: 1 1 100%; order: 3; display: flex; gap: 8px; align-items: center; font-size: 12px; padding-bottom: 4px; }
+  .iiq-progress > div { flex: 1; margin-top: 0; }
+  .iiq-timer { padding: 6px; font-size: 12px; }
+  .iiq-timer svg { display: none; }
+  .iiq-meter { display: none; }
+  .iiq-voice-popover { position: fixed; left: 50%; right: auto; transform: translateX(-50%); bottom: calc(100% + 12px); width: min(288px, calc(100vw - 32px)); }
+  .immersive-toasts { bottom: 148px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .iiq-immersive *, .immersive-toasts * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.iiq-immersive .iiq-candidate { background: #111827; }
+.iiq-camera-off { color: #fff; }
+.iiq-camera-off button { color: var(--ui-heading); }
+.iiq-controls, .iiq-voice-popover, [role="dialog"] > div:only-child { box-shadow: 0 6px 24px #0f172a18; }
+.iiq-controls { border-radius: 10px; }
+.iiq-main, .content-area, .text-interview { overflow-wrap: anywhere; }
+.iiq-sidebar > *, .content-area .grid > * { min-width: 0; }
+@media (max-width: 767px) {
+  .iiq-main { overflow-y: auto; }
+  .iiq-stage-grid { min-height: 280px; }
+  .iiq-sidebar { display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; }
+  .iiq-stage-grid { flex: none; grid-template-rows: auto auto; }
+  .iiq-video-column { container-type: normal; height: auto; }
+  .iiq-candidate, .iiq-caption-panel { width: 100%; max-height: none; }
+  .iiq-immersive { --iiq-controls-height: 156px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  @page { margin: 15mm; }
+  :root { --ui-page: white; --ui-ink: #111; --ui-secondary: #333; }
+  body, main, .content-area { background: white !important; }
+  nav, aside.fixed, .fixed, [role="dialog"], [role="tooltip"], video,
+  .iiq-footer, button:not([aria-expanded]), .lp-hero-actions { display: none !important; }
+  main, .content-area { margin: 0 !important; padding: 0 !important; min-height: 0 !important; }
+  .print-report, .print-report * { animation: none !important; transition: none !important; box-shadow: none !important; }
+  .print-report .grid { display: block; }
+  .print-report .grid > * { margin-bottom: 8pt; }
+  .print-report .overflow-hidden, .print-report .truncate, .print-report .line-clamp-2 {
+    overflow: visible; white-space: normal; max-height: none; -webkit-line-clamp: unset;
+  }
+  .print-report .glass-card { margin-bottom: 12pt; }
+  .print-report .report-question, .print-report li,
+  .print-report .glass-card:not(:has(button[aria-expanded], ul, ol)) { break-inside: avoid; }
+  .print-report button[aria-expanded] { color: black; break-after: avoid; }
+  .print-report button[aria-expanded] > svg:last-child { display: none; }
+  .print-report h1, .print-report h2, .print-report h3 { break-after: avoid; }
+  .print-report p, .print-report li { orphans: 3; widows: 3; }
+}

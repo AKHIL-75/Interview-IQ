@@ -1,0 +1,14 @@
+# Allowlist: no .env, credentials, venvs, tests, uploads or local artifacts.
+**
+!Dockerfile
+!.dockerignore
+!requirements-linux-amd64.txt
+!docker_healthcheck.py
+!app/
+!app/**
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.env*
+**/*.pem
+**/*.key

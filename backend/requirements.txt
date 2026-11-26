@@ -1,0 +1,34 @@
+# Interview-IQ Backend Dependencies
+# Python 3.10+ required
+
+# Phase 1 — FastAPI core
+fastapi==0.163.2
+starlette==1.3.1
+uvicorn[standard]==0.30.6
+pydantic==2.14.4
+pydantic-settings==2.5.2
+python-dotenv==1.2.3
+
+# Phase 3 — Ollama LLM communication
+httpx==0.27.2
+jsonschema==4.23.0
+
+# Phase 4 — Resume Processing & Parsing
+pypdf>=7.1.1
+python-docx>=1.1.2
+# Keep fresh installations at or above the upload-parser version verified locally.
+python-multipart>=0.0.32
+
+# Phase 6 — Semantic Matching & Gap Analysis
+sentence-transformers>=3.0.0
+torch>=2.2.0
+
+# Phase 11 — Supabase Auth & Database Persistence (uses httpx)
+
+# Azure upload decoding (PyAV)
+av>=19.0.2,<20; python_version >= "3.12"
+av>=17.1.0,<19; python_version < "3.12"
+numpy>=1.26.0,<3.0.0
+
+# Optional interviewer voice (Azure Neural TTS)
+azure-cognitiveservices-speech==1.52.0

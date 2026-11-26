@@ -1,0 +1,20 @@
+# Minimal frontend context. In particular, backend/.env never reaches the builder.
+**
+!Dockerfile
+!.dockerignore
+!package.json
+!package-lock.json
+!index.html
+!vite.config.js
+!tailwind.config.cjs
+!postcss.config.js
+!src/
+!src/**
+!public/
+!public/**
+!docker/
+!docker/nginx.conf
+**/.env*
+**/*.pem
+**/*.key
+**/__pycache__/

@@ -1,0 +1,51 @@
+name: interview-iq-local
+services:
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - ./backend/.env.docker
+    environment:
+      FRONTEND_URL: http://localhost:18080
+      CORS_EXTRA_ORIGINS: "http://127.0.0.1:18080,http://localhost:5173,http://127.0.0.1:5173"
+      API_V1_PREFIX: /api/v1
+      LLM_PROVIDER: ollama
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OLLAMA_MODEL: qwen3:4b
+      OPENROUTER_API_KEY: ""
+      OPENROUTER_BENCHMARK_ENABLED: "false"
+      PERFORMANCE_DIAGNOSTICS: "false"
+    ports:
+      - "127.0.0.1:8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - embedding-cache:/home/app/.cache/huggingface
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  frontend:
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: http://localhost:8000/api/v1
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:?Set public Supabase URL in .env.docker}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:?Set public Supabase anon key in .env.docker}
+    ports:
+      - "127.0.0.1:18080:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  embedding-cache:
